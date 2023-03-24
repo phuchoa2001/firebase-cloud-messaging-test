@@ -13,7 +13,7 @@ const firebaseConfig = {
 };
 
 export const app = initializeApp(firebaseConfig);
- 
+
 export const messaging = getMessaging(app);
 
 
@@ -21,7 +21,7 @@ async function requestPermission() {
 
   Notification.requestPermission().then((permission) => {
     if (permission === "granted") {
-      
+
       getToken(messaging, {
         vapidKey:
           "BLFv-aUgsmuTnBnkf2QjBh_UOHFzFYxV8g4KJ1Kpl63U4x9CVRgpDpDfbQi-Knm9N8-OPZx-IF2VWri_9fRfwcU",
