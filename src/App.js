@@ -1,9 +1,7 @@
 import { onMessage } from 'firebase/messaging';
 
 import { useEffect } from 'react';
-
-import './firebase-messaging-sw';
-
+import { messaging } from './firebase-messaging-sw';
 function App() {
 
   useEffect(() => {
