@@ -1,5 +1,4 @@
 import Push from "push.js";
-import { getMessaging } from "firebase/messaging";
 import { onMessage } from 'firebase/messaging';
 
 import { useEffect } from 'react';
@@ -7,7 +6,7 @@ import { useEffect } from 'react';
 import './messaging_init_in_sw';
 import { messaging} from './messaging_init_in_sw';
 
-const token = "BLFv-aUgsmuTnBnkf2QjBh_UOHFzFYxV8g4KJ1Kpl63U4x9CVRgpDpDfbQi-Knm9N8-OPZx-IF2VWri_9fRfwcU";
+// const token = "BLFv-aUgsmuTnBnkf2QjBh_UOHFzFYxV8g4KJ1Kpl63U4x9CVRgpDpDfbQi-Knm9N8-OPZx-IF2VWri_9fRfwcU";
 function App() {
 
   useEffect(() => {
