@@ -27,7 +27,7 @@ function App() {
   }, [])
   return (
     <div className="App">
-      <button onClick={handleSend}>
+      <button>
          Gữi tin nhắn cho tất cả mọi người 
       </button>
     </div>
