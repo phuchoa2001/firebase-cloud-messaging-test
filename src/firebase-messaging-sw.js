@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getMessaging, getToken } from "firebase/messaging";
-// import { onBackgroundMessage } from "firebase/messaging/sw";
+import { onBackgroundMessage } from "firebase/messaging/sw";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCHqtj50ByeLd35h7dbcPpcKB4CNMWPTq8",
@@ -13,21 +13,23 @@ const firebaseConfig = {
 };
 
 export const app = initializeApp(firebaseConfig);
-
+ 
 export const messaging = getMessaging(app);
 
+export const token = "BLFv-aUgsmuTnBnkf2QjBh_UOHFzFYxV8g4KJ1Kpl63U4x9CVRgpDpDfbQi-Knm9N8-OPZx-IF2VWri_9fRfwcU";
 
 async function requestPermission() {
 
   Notification.requestPermission().then((permission) => {
     if (permission === "granted") {
-
+      
       getToken(messaging, {
         vapidKey:
           "BLFv-aUgsmuTnBnkf2QjBh_UOHFzFYxV8g4KJ1Kpl63U4x9CVRgpDpDfbQi-Knm9N8-OPZx-IF2VWri_9fRfwcU",
       }).then((currentToken) => {
         if (currentToken) {
           console.log("currentToken:", currentToken);
+          alert("currentToken" , currentToken);
         } else {
           console.log("Can not get token");
         }
