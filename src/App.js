@@ -10,44 +10,6 @@ import { messaging} from './messaging_init_in_sw';
 const token = "BLFv-aUgsmuTnBnkf2QjBh_UOHFzFYxV8g4KJ1Kpl63U4x9CVRgpDpDfbQi-Knm9N8-OPZx-IF2VWri_9fRfwcU";
 function App() {
 
-  function subscribeTokenToTopic(token, topic) {
-    fetch('https://iid.googleapis.com/iid/v1/'+token+'/rel/topics/'+topic, {
-      method: 'POST',
-      headers: new Headers({
-        'Authorization': 'key='+fcm_server_key
-      })
-    }).then(response => {
-      if (response.status < 200 || response.status >= 400) {
-        throw 'Error subscribing to topic: '+response.status + ' - ' + response.text();
-      }
-      console.log('Subscribed to "'+topic+'"');
-    }).catch(error => {
-      console.error(error);
-    })
-  }
-
-  const handleSend = () => {
-    const topic = 'highScores';
-
-    const message = {
-      data: {
-        score: '850',
-        time: '2:45'
-      },
-      topic: topic
-    };
-    console.log("Send")
-    console.log("messaging" , getMessaging());
-    // Send a message to devices subscribed to the provided topic.
-    // getMessaging().send(message)
-    //   .then((response) => {
-    //     // Response is a message ID string.
-    //     console.log('Successfully sent message:', response);
-    //   })
-    //   .catch((error) => {
-    //     console.log('Error sending message:', error);
-    //   });
-  }
   useEffect(() => {
     onMessage(messaging, (payload) => {
       // ...  
