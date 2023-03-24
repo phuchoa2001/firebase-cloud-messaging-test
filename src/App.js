@@ -1,9 +1,18 @@
-import { onMessage } from 'firebase/messaging';
+import { onMessage , getToken} from 'firebase/messaging';
 
-import { useEffect } from 'react';
-import { messaging } from './firebase-messaging-sw';
+import { useEffect, useState } from 'react';
+import { messaging, token  } from './firebase-messaging-sw';
 function App() {
+  const [currentToken , setCurrentToken] = useState("")
 
+  useEffect(() => {
+    getToken(messaging , token).then((currentToken) => {
+      if (currentToken) {
+        setCurrentToken(currentToken);
+      }
+    })
+  } , [])
+  console.log("currentToken:", currentToken);
   useEffect(() => {
     onMessage(messaging, (payload) => {
       console.log("payload", payload);
@@ -27,9 +36,7 @@ function App() {
   }, [])
   return (
     <div className="App">
-      <button>
-        Gữi tin nhắn cho tất cả mọi người
-      </button>
+     {currentToken}
     </div>
   );
 }
